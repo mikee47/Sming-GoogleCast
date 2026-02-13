@@ -1,0 +1,11 @@
+name: CI Push
+
+on: [push]
+
+jobs:
+  build:
+    uses: SmingHub/Sming/.github/workflows/library.yml@develop
+    with:
+      sming_repo: https://github.com/mikee47/Sming
+      sming_branch: fix/nanopb
+      alias: GoogleCast

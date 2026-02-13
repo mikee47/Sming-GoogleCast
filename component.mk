@@ -15,6 +15,7 @@ GOOGLECAST_PATH := $(COMPONENT_PATH)
 .PHONY: rebuild-cast-proto
 
 $(GOOGLECAST_PATH)/proto/cast_channel.pb.%: $(GOOGLECAST_PATH)/proto/cast_channel.proto
-	$(Q) cd $(dir $<) && $(NANOPB_GENERATE) cast_channel.proto
+	echo "BUILD $<"
+	$(Q) cd $(dir $<) && $(NANOPB_GENERATE) $(basename $<)
 
 rebuild-cast-proto: $(GOOGLECAST_PATH)/proto/cast_channel.pb.c ##Rebuild the generated C and H files from the google-cast protocol
