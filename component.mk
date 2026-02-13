@@ -12,10 +12,8 @@ COMPONENT_DEPENDS := \
 GOOGLECAST_PATH := $(COMPONENT_PATH)
 
 ##@Building
+
 .PHONY: rebuild-cast-proto
-
-$(GOOGLECAST_PATH)/proto/cast_channel.pb.%: $(GOOGLECAST_PATH)/proto/cast_channel.proto
+rebuild-cast-proto: ##Rebuild the generated C and H files from the google-cast protocol
 	echo "$(NANOPB_GENERATE) cast_channel.proto"
-	$(Q) cd $(dir $<) && $(NANOPB_GENERATE) cast_channel.proto
-
-rebuild-cast-proto: $(GOOGLECAST_PATH)/proto/cast_channel.pb.c ##Rebuild the generated C and H files from the google-cast protocol
+	$(Q) cd $(GOOGLECAST_PATH)/proto && $(NANOPB_GENERATE) cast_channel.proto
